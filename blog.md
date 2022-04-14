@@ -1,8 +1,6 @@
 ---
 layout: blog
-title: Blog
+title:  
 slug: /blog
 ---
-
-Comming Soon.
 <br />
