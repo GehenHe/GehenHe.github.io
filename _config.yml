@@ -20,7 +20,7 @@ footer:
   show_powered_by: true
   contact:
     - name: Email
-      value: hyh1379478@163.com
+      value: Email
       link: mailto:hyh1379478@163.com
 
   follow:
@@ -31,6 +31,8 @@ footer:
 
 # Build settings
 markdown: kramdown
+kramdown:
+  math_engine: null
 sass:
     style: :compressed
 plugins:
