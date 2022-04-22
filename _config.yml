@@ -32,7 +32,7 @@ footer:
 # Build settings
 markdown: kramdown
 kramdown:
-  math_engine: mathjax
+  math_engine: null
 sass:
     style: :compressed
 plugins:
