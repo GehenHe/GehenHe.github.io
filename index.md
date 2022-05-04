@@ -18,7 +18,7 @@ I'm a fourth-year Ph.D student in the [College of Artificial Intelligence](http:
 
 09/2021: Paper accepted by **AAAI2021** (unsupervised domain adaption).
 
-07/2021: **First prize** of the [Global AI Innovation Contest](https://gaiic.tianchi.aliyun.com/#J_2489505110) (全球人工智能技术创新大赛), ont the track of large-scene multi-object detection and tracking, Hangzhou, China.
+07/2021: **First prize** of the [Global AI Innovation Contest](https://gaiic.tianchi.aliyun.com/#J_2489505110) (全球人工智能技术创新大赛), on the track of large-scene multi-object detection and tracking, Hangzhou, China.
 
 06/2021: Paper accepted by **CVPRW2021** (multi-modal tracking using RGB image and 3D point cloud).
 
@@ -37,3 +37,15 @@ I'm a fourth-year Ph.D student in the [College of Artificial Intelligence](http:
 11/2017: **Second Prize** of the [China Graduate Mathematical Contest in Modeling](https://cpipc.acge.org.cn/) (中国研究生数学建模大赛), Xi'an, China.
 
 07/2017: **<font size=4 >2</font>st Place** of the [China graduate Contest on Smart-city Technology and Creative Design](https://cpipc.acge.org.cn/cw/hp/1) (中国研究生智慧城市创新大赛), ChengDu, China.
+
+
+
+
+<br />
+
+# **Academic Services**
+
+* **Reviewer**, IEEEE Transaction on MultiMedia (TMM), IF: 6.51.
+* **Reviewer**, IEEEE/CAA Journal of Automatica Sinica (JAS), IF: 5.13.
+* **Reviewer**, IEEEE Transaction on Circuits and Systems for Video Technology (TCSVT), IF: 4.68.
+
