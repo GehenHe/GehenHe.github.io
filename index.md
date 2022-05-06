@@ -38,14 +38,4 @@ I'm a fourth-year Ph.D student in the [College of Artificial Intelligence](http:
 
 07/2017: **<font size=4 >2</font>st Place** of the [China graduate Contest on Smart-city Technology and Creative Design](https://cpipc.acge.org.cn/cw/hp/1) (中国研究生智慧城市创新大赛), ChengDu, China.
 
-
-
-
 <br />
-
-# **Academic Services**
-
-* **Reviewer**, IEEEE Transaction on MultiMedia (TMM), IF: 6.51.
-* **Reviewer**, IEEEE/CAA Journal of Automatica Sinica (JAS), IF: 5.13.
-* **Reviewer**, IEEEE Transaction on Circuits and Systems for Video Technology (TCSVT), IF: 4.68.
-
