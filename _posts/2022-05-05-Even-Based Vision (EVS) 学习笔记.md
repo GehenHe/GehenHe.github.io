@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Event-based Vision Sensor (EVS) 学习笔记"
-date:   2021-05-05
+date:   2022-05-05
 blurb: "A look at an example post using Bay Jekyll theme."
 og_image: /assets/img/content/post-example/Banner.jpg
 ---
@@ -59,10 +59,45 @@ og_image: /assets/img/content/post-example/Banner.jpg
 * Time Surface (TS)。TS是一个2D图，其每一像素存储一个对应位置“事件”的时间戳。因此，TS是一个运动历史图(Motion history image)，越大的值代表时间上越临近的运动。
 * Voxel Grid。为保留时间维度的信息，使用3D柱状图记录“事件”，其中每个voxel代表一个像素和时间间隔。
 * 3D点云。将时间作为第3维度，每个“事件”为一个3D点。
-* Motion-compensated image。根据目标的运动生成
+* Motion-compensated image。也叫image of warped events (IWE)，效果就是锐化边缘，时间对齐。
 * Reconstructed Image。
 
-### 4.3 Motion Segmentation
+### 4.3 经典算法
+
+#### 4.3.1 Image of Warped Events (IWE): A Unifying Contrast Maximization Framework for Event Cameras, with Applications to Motion, Depth, and Optical Flow Estimation
+
+这篇文章的核心思路就是，通过按照不同的假设（例如场景运动、目标深度等），将不同时刻的“事件”warp到同一时刻上，由此产生一张image of warped events (IWE)图片。而后通过计算该图片的对比度(contrast)，来估算参数。作者将该方法应用于深度、光流预测任务中。
+
+举个直观的例子，一辆拖拉机以一定的速度沿着某一方向匀速行驶，它每隔一段时间就会抛下一块砖头。每个砖头都带有掉落的时间和位置信息。现在我们需要估算出这个拖拉机的运动速度和方向。怎么做呢，首先给拖拉机假设一个运动速度，然后根据运动信息回推每块砖头在$t_r$时刻的位置，然后把$t_r$时刻回推的砖头摞起来，看看有多高。摞起来的砖头最高的那个就是最正确的假设。
+
+对应到EVS中，砖头就是“事件”，所有回推到$t_r$时刻的摞起来的砖头就是IWE，评判砖头高度的方法就是对比度(contrast)。
+
+具体方法如下： 
+
+<img src="{{ "/assets/blog/2022-05-05/IWE_framework.png" | absolute_url }}" alt="IWE framework" class="post-pic" div align=center/>
+
+以运动估计为例，首先假定运动参数$\theta$， 而后根据参数将$t_k$时刻的“事件”的位置$x_k$warp到$t_{ref}$时刻上:
+
+$$x_k'=\mathbf{W}(x_k,t_k;\theta)=x_k-(t_k-t_{ref})\theta,$$
+
+这里，$\theta=v$是速度向量。基于此，我们生成一个二维数据H，即IWE：
+
+$$H(x;\theta)=\sum_{k=1}^{N}b_k\delta(x-x_k'),$$
+
+其中，$N$是“事件”数目，$b_k=1$，$\delta(\cdot)$判定$x_k'$是否落入$x$的周围。
+
+而后，计算H的对比度（即方差）：
+
+$$f(\theta)=\sigma^2(H(x;\theta))=\frac{1}{N}\sum_{i,j}(H(i,j)-\overline{H})^2,$$
+
+其中，$\overline{H}$为$H$的均值。通过最大化$f(\theta)$，我们就可以得到最优的$\theta$。
+
+与此类似，深度的估计是通过相机标定和不同时刻的位姿参数，将不同时刻“事件”回推到某一$t_r$时刻，得到IWE。而后计算该时刻IWE的对比度。最大对比度所对应的参数即为最优深度估计。
+
+<img src="{{ "/assets/blog/2022-05-05/IWE_depth.png" | absolute_url }}" alt="IWE depth" class="post-pic" div align=center/>
+
+
+
 
 
 
